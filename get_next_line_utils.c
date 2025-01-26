@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmorente <mmorente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/08 14:24:23 by mmorente          #+#    #+#             */
-/*   Updated: 2025/01/26 12:33:06 by mmorente         ###   ########.fr       */
+/*   Created: 2025/01/26 12:29:34 by mmorente          #+#    #+#             */
+/*   Updated: 2025/01/26 12:31:23 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE.H
-#define GET_NEXT_LINE .H
+#include "get_next_line.h"
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 42
-#endif
-
-#include <stdlib.h>
-
-char	*get_next_line(int fd);
 void	*ft_calloc(size_t	count, size_t size)
+{
+	unsigned char	*temp;
+	size_t			i;
 
-#endif
+	i = 0;
+	temp = malloc(count * size);
+	if (!temp)
+		return (NULL);
+	while (i < count * size)
+	{
+		temp[i] = 0;
+		i++;
+	}
+	return (temp);
+}
