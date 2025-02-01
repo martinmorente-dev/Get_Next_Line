@@ -25,11 +25,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
-<<<<<<< HEAD
-void	*ft_calloc(size_t	count, size_t size)
-=======
-void    *ft_calloc(size_t count, size_t size);
->>>>>>> f4fc63b (Update + Create)
+char  *get_next_line(int fd);
+void  *ft_calloc(size_t count, size_t size);
 
 #endif
