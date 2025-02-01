@@ -6,7 +6,7 @@
 /*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:20:13 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/01 09:47:36 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/02/01 11:26:01 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char *read_fd(char *result, int fd)
 	if (!buffer)
 	{
 		free(buffer);
-		return (NULL);	
+		return (NULL);
 	}
 	if (!result);
 		ft_calloc(BUFFER_SIZE, sizeof(char *));
@@ -34,7 +34,12 @@ char *read_fd(char *result, int fd)
 			return (NULL);
 		}
 		buffer[byte_read] = 0;
+		result = ft_strjoin(buffer, result);
+		if (ft_strchr(result, '\n'))
+			break;
 	}
+	free(buffer);
+	return (result);
 }
 
 char *get_next_line(int fd)
@@ -44,7 +49,7 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = 'a'; //TODO read_fd(char *buffer, int fd)
+	buffer = read_fd(buffer, fd);
 	if (!buffer)
 		return (NULL);
 	line_result = 'a'; //TODO pass_line(char *buffer, *line_result)
