@@ -6,7 +6,7 @@
 /*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:24:23 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/01 11:10:53 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/02/02 10:21:12 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 char  	*get_next_line(int fd);
 void  	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlen(const char *str);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
 char    *ft_strjoin(char const *s1, char const *s2);
 char    *ft_strchr(const char *str, int c);
 
