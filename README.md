@@ -1,2 +1,4 @@
 # Get_Next_Line
-Read a whole file in C
+Return the first line of the file descriptor. 
+
+This project consist in introduce us the concept of static variables
