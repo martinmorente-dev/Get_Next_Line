@@ -6,7 +6,7 @@
 /*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:20:13 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/02 10:32:15 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:26:25 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,25 @@ void	delete_line_read(char *str, size_t n)
 	}
 }
 
+char 	*pass_line(char *buffer, char *line)
+{
+	int		i;
+
+	i = 0;
+	while(buffer[i])
+	{
+		if (buffer[i] == '\n')
+			break;
+		i++;
+	}
+
+	line = ft_memcpy(line, buffer, i);
+	return (line);
+}
 
 char	*read_fd(char *result, int fd)
 {
-	int	byte_read;
+	int		byte_read;
 	char	*buffer;
 	
 	buffer = ft_calloc(BUFFER_SIZE, sizeof(char *));	
@@ -60,15 +75,15 @@ char	*read_fd(char *result, int fd)
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char		*line_result;
+	char				*line_result;
 
-	line_result = NULL;
+	line_result = ft_calloc(1, sizeof(char *));
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = read_fd(buffer, fd);
 	if (!buffer)
 		return (NULL);
-	line_result = ft_memcpy(line_result, buffer, BUFFER_SIZE);
+	line_result = pass_line(buffer, line_result); //TODO function pass_line (char *buffer, char *line_result);
 	delete_line_read(buffer, BUFFER_SIZE);
 	return (line_result);
 }
