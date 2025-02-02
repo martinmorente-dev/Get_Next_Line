@@ -6,7 +6,7 @@
 /*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:20:13 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/02 12:26:25 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:37:13 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*read_fd(char *result, int fd)
 		if (byte_read == -1)
 		{
 			free(buffer);
-			return (NULL);
+return (NULL);
 		}
 		buffer[byte_read] = 0;
 		result = ft_strjoin(buffer, result);
