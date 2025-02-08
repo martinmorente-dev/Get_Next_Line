@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmorente <mmorente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 09:35:33 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/01 11:09:52 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/02/08 10:31:43 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 char	*ft_strchr(const char *str, int c)
 {
 	unsigned int	i;
-	char	cc;
+	char			cc;
 
 	cc = (char) c;
 	i = 0;

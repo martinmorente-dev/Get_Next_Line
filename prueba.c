@@ -1,24 +1,16 @@
 #include "get_next_line.h"
-#include <unistd.h>
+#include <stdio.h>
+
 
 int	main(void)
 {
-	int	fd = 0;
-	char *line = "a";
-	int i = 0;
+	int		fd;
+	char	*string;
 
-	fd = open("./text.txt", O_RDONLY);
-
-
-	line = get_next_line(fd);
-
-	close(fd);
-
-	while(line[i])
+	fd = open("./text.txt",O_RDONLY);
+	while( (string = get_next_line(fd)) != NULL)
 	{
-		write(1, &line[i], 1);
-		i++;
+		printf("%s",string);
 	}
-
-	return (0);
+	return(0);
 }
