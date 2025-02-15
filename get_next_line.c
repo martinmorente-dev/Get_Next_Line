@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmorente <mmorente@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:20:13 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/08 10:33:54 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/02/15 11:05:00 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ char	*read_fd(char *result, int fd)
 	int		byte_read;
 	char	*buffer;
 
-	buffer = ft_calloc(BUFFER_SIZE, sizeof(char *));
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char ));
+	if (!buffer)
+		return (NULL);
 	if (!result)
 		result = ft_calloc(1, sizeof(char *));
 	byte_read = 0;
@@ -60,7 +62,7 @@ char	*read_fd(char *result, int fd)
 		buffer[byte_read] = 0;
 		result = ft_strjoin(buffer, result);
 		if (ft_strchr(result, '\n'))
-			break ;
+			break;
 	}
 	free(buffer);
 	return (result);
@@ -71,13 +73,13 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line_result;
 
-	line_result = ft_calloc(1, sizeof(char *));
+	line_result = ft_calloc(1, sizeof(char ));
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = read_fd(buffer, fd);
 	if (!buffer)
 		return (NULL);
 	line_result = pass_line(buffer, line_result);
-	delete_line_read(buffer, BUFFER_SIZE);
+	delete_line_read(buffer, ft_strlen(line_result));
 	return (line_result);
 }
