@@ -19,7 +19,7 @@ void	delete_line_read(char *str, size_t n)
 	buff = (unsigned char *)str;
 	while (n > 0)
 	{
-		*buff = '\0';
+		buff[n] = '\0';
 		buff++;
 		n--;
 	}
