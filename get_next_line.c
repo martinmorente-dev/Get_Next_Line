@@ -6,23 +6,35 @@
 /*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:20:13 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/15 11:05:00 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/03/09 12:24:58 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	delete_line_read(char *str, size_t n)
+char	*delete_line_read(char *str)
 {
-	unsigned char	*buff;
-
-	buff = (unsigned char *)str;
-	while (n > 0)
+	char	*buff;
+	int	count_lbreack;
+	int	j;
+	
+	count_lbreack = 0;
+	while (str[count_lbreack] != '\n')
+		count_lbreack++;
+	j = 0;
+	while(str[count_lbreack])
 	{
-		buff[n] = '\0';
-		buff++;
-		n--;
+		j++;
+		count_lbreack++;
 	}
+	buff = ft_calloc(j + 1, sizeof(char));
+	if (buff != NULL)
+	{
+		free(buff);
+		return(NULL);
+	}
+	ft_memcpy(buff,&str[count_lbreack],j);
+	return(buff);
 }
 
 char	*pass_line(char *buffer, char *line)
@@ -80,6 +92,6 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line_result = pass_line(buffer, line_result);
-	delete_line_read(buffer, ft_strlen(line_result));
+	buffer = delete_line_read(buffer);
 	return (line_result);
 }
