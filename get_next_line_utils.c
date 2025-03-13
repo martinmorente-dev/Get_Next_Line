@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmorente <mmorente@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mmorente <mmorente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 09:35:33 by mmorente          #+#    #+#             */
-/*   Updated: 2025/02/08 10:31:43 by mmorente         ###   ########.fr       */
+/*   Updated: 2025/03/13 18:10:27 by mmorente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (temp);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char *s2)
 {
 	char	*new_string;
 	size_t	total_size;
@@ -37,12 +37,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	total_size = ft_strlen(s1) + ft_strlen(s2);
-	new_string = (char *)malloc((total_size + 1) * sizeof(char));
+	new_string = ft_calloc((total_size), sizeof(char));
 	if (!new_string)
 		return (NULL);
-	ft_memcpy((void *)new_string, s1, ft_strlen(s1));
-	ft_memcpy((void *)(new_string + ft_strlen(s1)), s2, ft_strlen(s2));
-	new_string[total_size] = '\0';
+	ft_memcpy((void *)new_string, s1, ft_strlen(s1) + 1);
+	ft_memcpy((void *)(new_string + ft_strlen(s1)), s2, ft_strlen(s2) + 1);
+	free(s2);
 	return (new_string);
 }
 
